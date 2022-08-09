@@ -1,13 +1,19 @@
-import { fromPairs } from "lodash";
-import './style.css';
+ import { fromPairs } from "lodash";
+ import './style.css';
+ import cards from "./modules/cards.js";
 
-const span = document.getElementById('popUpComments');
-const popUp1Ul = document.getElementById('commentUl');
-const popUpCommentCont = document.createElement('li');
-popUpCommentCont.classList = 'popUp1';
-popUpCommentCont.innerText = "my comment"/* `<li class="popUp1"><span>${user}</span><span class="span">${comment}</span></li>`;  */
-popUp1Ul.appendChild(popUpCommentCont);
-document.span.appendChild(popUp1Ul);
+
+
+
+// const span = document.getElementById('popUpComments');
+// const popUp1Ul = document.getElementById('commentUl');
+// const popUpCommentCont = document.createElement('li');
+// popUpCommentCont.classList = 'popUp1';
+// popUpCommentCont.innerText = "my comment"/* `<li class="popUp1"><span>${user}</span><span class="span">${comment}</span></li>`;  */
+// popUp1Ul.appendChild(popUpCommentCont);
+// document.span.appendChild(popUp1Ul);
+
+
 
 // https://static.tvmaze.com/js/paq.js?v=1626190720
 /* let baseUrl = 'https://www.tvmaze.com/'
