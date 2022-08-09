@@ -1,6 +1,5 @@
-import { fromPairs } from "lodash";
+//import { fromPairs } from "lodash";
 import './style.css';
-import icon from './assets/icon.png';
 
 const retrieveFromAPI = async () => {
   const res = await fetch(`${baseUrl}/games/KiAaECHQt9kyqpbrRb7E/scores`);
