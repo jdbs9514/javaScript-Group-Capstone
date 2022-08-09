@@ -1,4 +1,6 @@
 import { fromPairs } from "lodash";
+import './style.css';
+import icon from './assets/icon.png';
 
 function component() {
     const element = document.createElement('div');
