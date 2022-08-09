@@ -1,6 +1,45 @@
- import { fromPairs } from "lodash";
- import './style.css';
- import cards from "./modules/cards.js";
+import './style.css';
+ 
+
+ const cards = [
+  {
+    image: 'https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg',
+    heading: 'Movies',
+    badge1: 'comments',
+    badge2: 'reservation',
+    icon: '<i class="fa-solid fa-heart"></i>'
+  },
+];
+
+const divContainer = document.querySelector('main.main');
+
+for (let i = 0; i < 6; i +=1) {
+  const firstSection = document.querySelector('.append');
+  
+
+
+  const imageTheme = document.createElement('img');
+  imageTheme.classList.add('image');
+  imageTheme.src = cards[i].image;
+  firstSection.appendChild(imageTheme);
+
+  const subTitle = document.createElement('h2');
+  subTitle.classList.add('subtitle');
+  subTitle.innerText = cards[i].heading;
+  firstSection.appendChild(subTitle);
+
+  const commentBtn = document.createElement('button');
+  commentBtn.type = 'button';
+  commentBtn.textContent = cards[i].badge1;
+  firstSection.appendChild(commentBtn);
+
+  const reservationBtn = document.createElement('button');
+  reservationBtn.type = 'button';
+  reservationBtn.textContent = cards[i].badge2;
+  firstSection.appendChild(reservationBtn);
+
+}
+divContainer.appendChild(firstSection);
 
 
 
