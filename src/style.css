@@ -35,7 +35,7 @@ button {
 }
 
 .popUpComment {
-
+    display: none;
 }
 
 .popUpComment.active {
