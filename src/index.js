@@ -2,23 +2,23 @@ import './style.css';
 import  { fetchData } from './modules/utils.js';
 
 fetchData();
-const append = document.querySelector('#menu')
+const append = document.querySelector('#menu');
 
 export const display = (scores) => {
   for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
     const items = scores[i]
     const div = document.createElement('div');
     div?.classList.add('items')
-   const commentButton = document.createElement('button')
-   commentButton.innerHTML = "comments";
-   commentButton.classList = 'commentBtn';
-   const reservationButton = document.createElement('button')
-   reservationButton.innerHTML = "Reservations"
-   const icon = document.createElement('i')
-   icon.className = 'fa-regular fa-heart'
-   const likes = document.createElement('div')
-   likes.innerHTML = '5 likes'
-   likes.classList.add('likes')
+    const commentButton = document.createElement('button')
+    commentButton.innerHTML = "comments";
+    commentButton.classList = 'commentBtn';
+    const reservationButton = document.createElement('button')
+    reservationButton.innerHTML = "Reservations"
+    const icon = document.createElement('i')
+    icon.className = 'fa-regular fa-heart'
+    const likes = document.createElement('div')
+    likes.innerHTML = '5 likes'
+    likes.classList.add('likes')
     const snacksimg = new Image(300, 300);
     snacksimg.className = 'img';
     snacksimg.setAttribute('src', items?.image);
@@ -26,9 +26,8 @@ export const display = (scores) => {
     titleDiv?.classList.add('titleDiv')
     icon.style.lineHeight = 3.3
     icon.style.marginLeft = '18px'
-    const title = document.createElement('p') 
+    const title = document.createElement('p')
     title.innerHTML = items?.title
-
     titleDiv.appendChild(title)
     titleDiv.appendChild(icon)
     div.appendChild(snacksimg)
@@ -37,28 +36,21 @@ export const display = (scores) => {
     div.appendChild(commentButton)
     div.appendChild(reservationButton)
     append.appendChild(div)
-  }
-  };
-
-    export const comment = (scores) => {
-    for (let i = 0; i < scores?.slice(0, 1).length; i += 1) {
-      const items = scores[i]
-      const commentPopUp = document.querySelector('div.popComment');
+    commentButton.addEventListener('click', () => {
+      const commentPopUp = document.querySelector('.popComment');
       const div = document.createElement('div');
       div?.classList.add('items')
-     const commentButton = document.createElement('button')
-     commentButton.innerHTML = "comments"
-          
+      const commentButton = document.createElement('button')
+      commentButton.innerHTML = "comments"
       const movieImg = new Image(300, 300);
       movieImg.className = 'img';
       movieImg.setAttribute('src', items?.image);
       const titleDiv = document.createElement('div')
       titleDiv?.classList.add('titleDiv')
-      const title = document.createElement('p') 
+      const title = document.createElement('p')
       title.innerHTML = items?.title
       const ul = document.createElement('ul');
-      ul.classList('info');
-      
+      ul.classList.add('info');
       const li1 = document.createElement('li')
       li1.classList = 'infoChild1';
       ul.appendChild(li1);
@@ -71,20 +63,13 @@ export const display = (scores) => {
       const li4 = document.createElement('li')
       li4.classList = 'infoChild4';
       ul.appendChild(li4);
-        
       title.appendChild(ul);
       div.appendChild(movieImg);
       div.appendChild(title);
       div.appendChild(commentButton);
-
       titleDiv.appendChild(div);
       commentPopUp.appendChild(titleDiv);
-    }
-    };
-
-    /* const commentBtn = document.getElementsByClassName('.commentBtn');
-    commentBtn.addEventListener('click', () => {
-      const commentPopUp = document.querySelectorAll('div.popComment');
-      commentPopUp.classList.add = 'active';
-    }); */
-    
+      commentPopUp.classList.add('.active');
+    });
+  }
+};
