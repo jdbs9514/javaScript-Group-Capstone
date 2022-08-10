@@ -19,7 +19,6 @@ margin-top: 20px;
     align-self: center;
     text-align: center;
     justify-content: center;
-    border: 1px solid red;
 }
 
 button {
@@ -30,12 +29,7 @@ button {
 
 .likes {
     display: flex;
-    border: 1px solid goldenrod;
     justify-content: flex-end!important;
     text-align: right;
     width: 200px;
-}
-
-.items .fa-solid {
-    border: 1px solid yellow;
 }

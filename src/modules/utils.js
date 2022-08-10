@@ -29,6 +29,7 @@ export const display = (scores) => {
    reservationButton.innerHTML = "Reservations"
    const icon = document.createElement('i')
    icon.className = 'fa-regular fa-heart'
+   
    const likes = document.createElement('div')
    likes.innerHTML = '5 likes'
    likes.classList.add('likes')
@@ -37,6 +38,10 @@ export const display = (scores) => {
     snacksimg.setAttribute('src', items?.image);
     const titleDiv = document.createElement('div')
     titleDiv?.classList.add('titleDiv')
+    icon.style.lineHeight = 3.3
+    icon.style.marginLeft = '18px'
+
+    
     const title = document.createElement('p') 
     title.innerHTML = items?.title
     titleDiv.appendChild(title)
