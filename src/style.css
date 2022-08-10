@@ -1,72 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 .navBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-left: 5%;
-    margin-right: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-left: 5%;
+  margin-right: 20%;
 }
 
 .navMenu {
-    display: flex;
-    gap: 100%;
-    text-decoration: none;
-    list-style: none;
-    padding-left: 0;
-    justify-content: space-evenly;
+  display: flex;
+  gap: 100%;
+  text-decoration: none;
+  list-style: none;
+  padding-left: 0;
+  justify-content: space-evenly;
 }
 
 a {
-    text-decoration: none;
-
+  text-decoration: none;
 }
 
 .logoImg {
-   width: 300; 
-   height: 150;
+  width: 300px;
+  height: 150px;
 }
 
 .menu {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-  }
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
 
 .items {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .titleDiv {
-    display: flex;
-    width: 300px;
-    align-self: center;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  width: 300px;
+  align-self: center;
+  text-align: center;
+  justify-content: center;
 }
 
 button {
- margin-top: 15px;
- padding: 10px 20px;
- border-radius: 8px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
 }
 
 .likes {
-    display: flex;
-    justify-content: flex-end!important;
-    text-align: right;
-    width: 200px;
+  display: flex;
+  justify-content: flex-end !important;
+  text-align: right;
+  width: 200px;
 }
 
 .popUpComment {
-    display: none;
+  display: none;
 }
 
 .popComment.active {
-    display: flex;  
+  display: flex;
 }
 
 .popupitems {
@@ -84,7 +88,7 @@ button {
   padding-bottom: 30%;
   margin: auto;
 }
- 
+
 .info {
   list-style-type: none;
   display: flex;
@@ -105,6 +109,3 @@ button {
   cursor: pointer;
   font-size: 125%;
 }
-
-
-

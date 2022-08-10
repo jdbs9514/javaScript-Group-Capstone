@@ -1,10 +1,7 @@
 import './style.css';
-<<<<<<< HEAD
 import  { fetchData } from './modules/utils.js';
 import filmtube1 from './assets/filmtube1.png';
 
-=======
->>>>>>> 6f7715cad4f9ceca523952b1aaf9fe16578670e7
 fetchData();
 
 const append = document.querySelector('#menu');
