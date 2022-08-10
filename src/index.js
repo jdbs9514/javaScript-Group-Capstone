@@ -1,7 +1,6 @@
 import './style.css';
-import  { fetchData } from './modules/utils.js';
-
 fetchData();
+
 const append = document.querySelector('#menu');
 export const display = (scores) => {
   for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
