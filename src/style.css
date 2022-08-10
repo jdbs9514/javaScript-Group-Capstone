@@ -38,9 +38,46 @@ button {
     display: none;
 }
 
-.popUpComment.active {
-    display: flex;
-    width: 90%;
-    height: 90%;
+.popComment.active {
+    display: flex;  
+}
+
+.popupitems {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: #fff;
+  position: absolute;
+  width: 170%;
+  height: auto;
+  z-index: 10;
+  padding-top: 30%;
+  padding-left: 70%;
+  padding-bottom: 30%;
+  margin: auto;
 }
  
+.info {
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  text-align: center;
+  padding-left: 0%;
+}
+
+.infoChild {
+  font-size: 60%;
+}
+
+.delete {
+  background: none;
+  border: none;
+  align-self: flex-end;
+  margin-right: 35%;
+  cursor: pointer;
+  font-size: 125%;
+}
+
+
+
