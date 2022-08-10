@@ -16,6 +16,7 @@ export const fetchData = async () => {
       .then((response) => response.json())
       .then((data) => {
           scores = data?.results;
+          console.log(scores);
           display(scores)
       })
       .catch((error) => {

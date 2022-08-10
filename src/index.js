@@ -3,7 +3,6 @@ import  { fetchData } from './modules/utils.js';
 
 fetchData();
 const append = document.querySelector('#menu');
-
 export const display = (scores) => {
   for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
     const items = scores[i]
@@ -40,8 +39,6 @@ export const display = (scores) => {
       const commentPopUp = document.querySelector('.popComment');
       const div = document.createElement('div');
       div?.classList.add('items')
-      const commentButton = document.createElement('button')
-      commentButton.innerHTML = "comments"
       const movieImg = new Image(300, 300);
       movieImg.className = 'img';
       movieImg.setAttribute('src', items?.image);
@@ -53,20 +50,19 @@ export const display = (scores) => {
       ul.classList.add('info');
       const li1 = document.createElement('li')
       li1.classList = 'infoChild1';
+      li1.innerText = items?.titleOriginal;
       ul.appendChild(li1);
-      const li2 = document.createElement('li')
-      li2.classList = 'infoChild1';
-      ul.appendChild(li2);
       const li3 = document.createElement('li')
       li3.classList = 'infoChild3';
+      li3.innerHTML = items?.rating;
       ul.appendChild(li3);
       const li4 = document.createElement('li')
       li4.classList = 'infoChild4';
+      li4.innerText = items?.release;      
       ul.appendChild(li4);
       title.appendChild(ul);
       div.appendChild(movieImg);
       div.appendChild(title);
-      div.appendChild(commentButton);
       titleDiv.appendChild(div);
       commentPopUp.appendChild(titleDiv);
       commentPopUp.classList.add('.active');
