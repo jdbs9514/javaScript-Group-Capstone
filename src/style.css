@@ -1,3 +1,30 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-left: 5%;
+    margin-right: 20%;
+}
+
+.navMenu {
+    display: flex;
+    gap: 100%;
+    text-decoration: none;
+    list-style: none;
+    padding-left: 0;
+    justify-content: space-evenly;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.logoImg {
+   width: 300; 
+   height: 150;
+}
+
 .menu {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

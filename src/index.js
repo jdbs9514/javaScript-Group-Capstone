@@ -1,5 +1,6 @@
 import './style.css';
 import  { fetchData } from './modules/utils.js';
+import filmtube1 from './assets/filmtube1.png';
 
 fetchData();
 const append = document.querySelector('#menu');
