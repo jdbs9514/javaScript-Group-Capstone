@@ -2,9 +2,10 @@ const cards = [
     {
       image: 'https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg',
       heading: 'Movies',
+      icon: '<i class="fa-solid fa-heart"></i>',
       badge1: 'comments',
       badge2: 'reservation',
-      icon: '<i class="fa-solid fa-heart"></i>'
+     
     },
   ];
   

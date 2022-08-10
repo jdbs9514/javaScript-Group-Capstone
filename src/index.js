@@ -1,8 +1,41 @@
- import { fromPairs } from "lodash";
- import './style.css';
- import cards from "./modules/cards.js";
+//  import { fromPairs } from "lodash";
+//  import './style.css';
+//  import cards from "./modules/cards.js";
+// export let scores=[];
 
-
+let scores = [];
+const append = document.querySelector('#menu')
+export const fetchData = async () => {
+  await fetch('https://movies-app1.p.rapidapi.com/api/movies', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'X-RapidAPI-Key': '23e1d48543msh69a29a6c279791ap1bca45jsn8e0256d8d8f5',
+  'X-RapidAPI-Host': 'movies-app1.p.rapidapi.com'
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+        scores = data?.results;
+        for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
+          const items = scores[i]
+          console.log(items)
+          const div = document.createElement('div');
+          div.innerHTML = items?.title
+          const snacksimg = new Image(300, 300);
+          snacksimg.className = 'img';
+          snacksimg.setAttribute('src', items?.image);
+          div.appendChild(snacksimg)
+          append.appendChild(div)
+          // document.body.appendChild(append);
+      
+        }
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+ fetchData();
 
 
 // const span = document.getElementById('popUpComments');
