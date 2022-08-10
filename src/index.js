@@ -1,4 +1,4 @@
-
+import './style.css';
 import  { fetchData } from './modules/utils.js';
 
 fetchData();
@@ -10,7 +10,8 @@ export const display = (scores) => {
     const div = document.createElement('div');
     div?.classList.add('items')
    const commentButton = document.createElement('button')
-   commentButton.innerHTML = "comments"
+   commentButton.innerHTML = "comments";
+   commentButton.classList = 'commentBtn';
    const reservationButton = document.createElement('button')
    reservationButton.innerHTML = "Reservations"
    const icon = document.createElement('i')
@@ -38,3 +39,52 @@ export const display = (scores) => {
     append.appendChild(div)
   }
   };
+
+    export const comment = (scores) => {
+    for (let i = 0; i < scores?.slice(0, 1).length; i += 1) {
+      const items = scores[i]
+      const commentPopUp = document.querySelector('div.popComment');
+      const div = document.createElement('div');
+      div?.classList.add('items')
+     const commentButton = document.createElement('button')
+     commentButton.innerHTML = "comments"
+          
+      const movieImg = new Image(300, 300);
+      movieImg.className = 'img';
+      movieImg.setAttribute('src', items?.image);
+      const titleDiv = document.createElement('div')
+      titleDiv?.classList.add('titleDiv')
+      const title = document.createElement('p') 
+      title.innerHTML = items?.title
+      const ul = document.createElement('ul');
+      ul.classList('info');
+      
+      const li1 = document.createElement('li')
+      li1.classList = 'infoChild1';
+      ul.appendChild(li1);
+      const li2 = document.createElement('li')
+      li2.classList = 'infoChild1';
+      ul.appendChild(li2);
+      const li3 = document.createElement('li')
+      li3.classList = 'infoChild3';
+      ul.appendChild(li3);
+      const li4 = document.createElement('li')
+      li4.classList = 'infoChild4';
+      ul.appendChild(li4);
+        
+      title.appendChild(ul);
+      div.appendChild(movieImg);
+      div.appendChild(title);
+      div.appendChild(commentButton);
+
+      titleDiv.appendChild(div);
+      commentPopUp.appendChild(titleDiv);
+    }
+    };
+
+    /* const commentBtn = document.getElementsByClassName('.commentBtn');
+    commentBtn.addEventListener('click', () => {
+      const commentPopUp = document.querySelectorAll('div.popComment');
+      commentPopUp.classList.add = 'active';
+    }); */
+    
