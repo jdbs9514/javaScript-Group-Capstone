@@ -1,120 +1,103 @@
 import './style.css';
-// import { fetchData } from './modules/utils.js';
-// import filmtube1 from './assets/filmtube1.png';
+ 
 
-fetchData();
+ const cards = [
+  {
+    image: 'https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg',
+    heading: 'Movies',
+    badge1: 'comments',
+    badge2: 'reservation',
+    icon: '<i class="fa-solid fa-heart"></i>'
+  },
+];
 
-const append = document.querySelector('#menu');
-export const display = (scores) => {
-  for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
-    // create the display page of the project.
-    const items = scores[i];
-    const div = document.createElement('div');
-    div?.classList.add('items');
-    const commentButton = document.createElement('button');
-    commentButton.innerHTML = "comments";
-    commentButton.classList = 'commentBtn';
-    const reservationButton = document.createElement('button');
-    reservationButton.innerHTML = 'Reservations';
-    const icon = document.createElement('i');
-    icon.className = 'fa-regular fa-heart';
-    const likes = document.createElement('div');
-    likes.innerHTML = '5 likes';
-    likes.classList.add('likes');
-    const snacksimg = new Image(300, 300);
-    snacksimg.className = 'img';
-    snacksimg.setAttribute('src', items?.image);
-    const titleDiv = document.createElement('div');
-    titleDiv?.classList.add('titleDiv');
-    icon.style.lineHeight = 3.3;
-    icon.style.marginLeft = '18px';
-    const title = document.createElement('p');
-    title.innerHTML = items?.title;
-    titleDiv.appendChild(title);
-    titleDiv.appendChild(icon);
-    div.appendChild(snacksimg);
-    div.appendChild(titleDiv);
-    div.appendChild(likes);
-    div.appendChild(commentButton);
-    div.appendChild(reservationButton);
-    append.appendChild(div);
-    commentButton.addEventListener('click', () => {
-      // create the Pop up window to the comments.
-      const commentPopUp = document.querySelector('.popComment');
-      const div = document.createElement('div');
-      div?.classList.add('popupitems');
-      const deleteBtn = document.createElement('button');
-      deleteBtn.type = 'button';
-      deleteBtn.classList = 'delete';
-      deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-      div.appendChild(deleteBtn);
-      const movieImg = new Image(300, 300);
-      movieImg.className = 'img';
-      movieImg.setAttribute('src', items?.image);
-      const titleDiv = document.createElement('div');
-      titleDiv?.classList.add('titleDiv');
-      const title = document.createElement('h2');
-      title.innerHTML = items?.title;
-      const ul = document.createElement('ul');
-      ul.classList.add('info');
-      const li1 = document.createElement('li');
-      li1.classList = 'infoChild';
-      li1.innerText = items?.titleOriginal;
-      ul.appendChild(li1);
-      const li3 = document.createElement('li');
-      li3.classList = 'infoChild';
-      li3.innerHTML = items?.rating;
-      ul.appendChild(li3);
-      const li4 = document.createElement('li');
-      li4.classList = 'infoChild';
-      li4.innerText = items?.release;
-      ul.appendChild(li4);
-      title.appendChild(ul);
-      div.appendChild(movieImg);
-      div.appendChild(title);
-      titleDiv.appendChild(div);
-      commentPopUp.appendChild(titleDiv);
-      commentPopUp.classList.add('.active');
-    });
+const divContainer = document.querySelector('main.main');
 
-    reservationButton.addEventListener('click', () => {
-      // create the Pop up window to the reservation.
-      const commentPopUp = document.querySelector('.popComment');
-      const div = document.createElement('div');
-      div?.classList.add('popupitems');
-      const deleteBtn = document.createElement('button');
-      deleteBtn.type = 'button';
-      deleteBtn.classList = 'delete';
-      deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-      div.appendChild(deleteBtn);
-      const movieImg = new Image(300, 300);
-      movieImg.className = 'img';
-      movieImg.setAttribute('src', items?.image);
-      const titleDiv = document.createElement('div');
-      titleDiv?.classList.add('titleDiv');
-      const title = document.createElement('h2');
-      title.classList = 'title';
-      title.innerHTML = items?.title
-      const ul = document.createElement('ul');
-      ul.classList.add('info');
-      const li1 = document.createElement('li');
-      li1.classList = 'infoChild';
-      li1.innerText = items?.titleOriginal;
-      ul.appendChild(li1);
-      const li3 = document.createElement('li');
-      li3.classList = 'infoChild';
-      li3.innerHTML = items?.rating;
-      ul.appendChild(li3);
-      const li4 = document.createElement('li');
-      li4.classList = 'infoChild';
-      li4.innerText = items?.release;
-      ul.appendChild(li4);
-      title.appendChild(ul);
-      div.appendChild(movieImg);
-      div.appendChild(title);
-      titleDiv.appendChild(div);
-      commentPopUp.appendChild(titleDiv);
-      commentPopUp.classList.add('.active');
-    });
-  }
+for (let i = 0; i < 6; i +=1) {
+  const firstSection = document.querySelector('.append');
+  
+
+
+  const imageTheme = document.createElement('img');
+  imageTheme.classList.add('image');
+  imageTheme.src = cards[i].image;
+  firstSection.appendChild(imageTheme);
+
+  const subTitle = document.createElement('h2');
+  subTitle.classList.add('subtitle');
+  subTitle.innerText = cards[i].heading;
+  firstSection.appendChild(subTitle);
+
+  const commentBtn = document.createElement('button');
+  commentBtn.type = 'button';
+  commentBtn.textContent = cards[i].badge1;
+  firstSection.appendChild(commentBtn);
+
+  const reservationBtn = document.createElement('button');
+  reservationBtn.type = 'button';
+  reservationBtn.textContent = cards[i].badge2;
+  firstSection.appendChild(reservationBtn);
+
+}
+divContainer.appendChild(firstSection);
+
+
+
+
+// const span = document.getElementById('popUpComments');
+// const popUp1Ul = document.getElementById('commentUl');
+// const popUpCommentCont = document.createElement('li');
+// popUpCommentCont.classList = 'popUp1';
+// popUpCommentCont.innerText = "my comment"/* `<li class="popUp1"><span>${user}</span><span class="span">${comment}</span></li>`;  */
+// popUp1Ul.appendChild(popUpCommentCont);
+// document.span.appendChild(popUp1Ul);
+
+
+
+// https://static.tvmaze.com/js/paq.js?v=1626190720
+/* let baseUrl = 'https://www.tvmaze.com/'
+const retrieveFromAPI = async () => {
+  const com = await fetch(`${baseUrl}js/paq.js?v=1626190720/comments`);
+  const comm = await com.json();
+  const comments = comm.result;
+  return comments;
 };
+const commentBoardWrapper = document.getElementById('commentList');
+const commentBoard = ({ user, comment }) => {
+  commentBoardWrapper.innerHTML += `<li class="animated bounce"><span>${user}</span><span class="span">${comment}</span></li>`;
+};
+
+const displayComments = async () => {
+  const comment = await retrieveFromAPI();
+  comments.forEach((comment) => {
+    scoreBoard(comment);
+  });
+};
+
+// https://static.tvmaze.com/js/paq.js?v=1626190720
+
+ const retrieveFromAPIres = async () => {
+  const res = await fetch(`${baseUrl}js/paq.js?v=1626190720/reserves`);
+  const reserv = await res.json();
+  const reserves = reserv.result;
+  return reserves;
+ };
+
+const reserveBoardWrapper = document.getElementById('reserveList');
+const reserveBoard = ({ user, reserve }) => {
+  reserveBoardWrapper.innerHTML += `<li class="animated bounce"><span>${user}</span><span class="span">${reserve}</span></li>`;
+};
+
+const displayReserved = async () => {
+  const reserves = await retrieveFromAPI();
+  reserves.forEach((reserve) => {
+    reserveBoard(reserve);
+  });
+};
+
+const comments = document.querySelector('button#comments');
+comments.addEventListener('click', displayComments);
+
+const reservations = document.querySelector('button#reservations');
+reservations.addEventListener('click', displayReserved);
+ */
