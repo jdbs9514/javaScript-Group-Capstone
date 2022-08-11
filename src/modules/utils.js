@@ -3,7 +3,7 @@ const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/
 
 import { display } from "../index.js";
 
-export const fetchData = async () => {
+const fetchData = async () => {
     let scores = [];
     await fetch('https://movies-app1.p.rapidapi.com/api/movies', {
       headers: {
@@ -25,5 +25,5 @@ export const fetchData = async () => {
       return scores
   };
   
-  
+  export default fetchData;  
 

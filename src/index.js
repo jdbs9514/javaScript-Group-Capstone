@@ -1,11 +1,11 @@
 import './style.css';
-// import { fetchData } from './modules/utils.js';
+import fetchData from './modules/utils.js';
 // import filmtube1 from './assets/filmtube1.png';
 
 fetchData();
 
 const append = document.querySelector('#menu');
-export const display = (scores) => {
+const display = (scores) => {
   for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
     // create the display page of the project.
     const items = scores[i];
@@ -118,3 +118,5 @@ export const display = (scores) => {
     });
   }
 };
+
+export default display;
