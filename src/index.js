@@ -16,7 +16,6 @@ fetch(`${url}&api_key=${key}&page=1`)
       const movieCard = document.createElement('div');
       movieCard.classList.add('items');
       movieCard.id = movie.id;
-      console.log(movie);
       movieCard.innerHTML = `
               <img class="movie-img" 
                 src="${imgPath + movie.poster_path}" alt="">
