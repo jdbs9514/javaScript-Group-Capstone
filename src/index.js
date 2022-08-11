@@ -1,122 +1,32 @@
-import './style.css';
-import fetchData from './modules/utils.js';
-// import filmtube1 from './assets/filmtube1.png';
+const url =
+  "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc";
+const key = "367c6d3a0d8f351d5debe2e3965cfebc";
+// https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=367c6d3a0d8f351d5debe2e3965cfebc&page=1
 
-fetchData();
+const imgPath = "https://image.tmdb.org/t/p/w1280/";
+const bigContainer = document.querySelector('.title-div');
 
-const append = document.querySelector('#menu');
-const display = (scores) => {
-  for (let i = 0; i < scores?.slice(0, 6).length; i += 1) {
-    // create the display page of the project.
-    const items = scores[i];
-    const div = document.createElement('div');
-    div?.classList.add('items');
-    const commentButton = document.createElement('button');
-    commentButton.innerHTML = "comments";
-    commentButton.classList = 'commentBtn';
-    const reservationButton = document.createElement('button');
-    reservationButton.innerHTML = 'Reservations';
-    const icon = document.createElement('i');
-    icon.className = 'fa-regular fa-heart';
-    const likes = document.createElement('div');
-    likes.innerHTML = '5 likes';
-    likes.classList.add('likes');
-    const snacksimg = new Image(300, 300);
-    snacksimg.className = 'img';
-    snacksimg.setAttribute('src', items?.image);
-    const titleDiv = document.createElement('div');
-    titleDiv?.classList.add('titleDiv');
-    icon.style.lineHeight = 3.3;
-    icon.style.marginLeft = '18px';
-    const title = document.createElement('p');
-    title.innerHTML = items?.title;
-    titleDiv.appendChild(title);
-    titleDiv.appendChild(icon);
-    div.appendChild(snacksimg);
-    div.appendChild(titleDiv);
-    div.appendChild(likes);
-    div.appendChild(commentButton);
-    div.appendChild(reservationButton);
-    append.appendChild(div);
-    commentButton.addEventListener('click', () => {
-      // create the Pop up window to the comments.
-      const commentPopUp = document.querySelector('.popComment');
-      const div = document.createElement('div');
-      div?.classList.add('popupitems');
-      const deleteBtn = document.createElement('button');
-      deleteBtn.type = 'button';
-      deleteBtn.classList = 'delete';
-      deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-      div.appendChild(deleteBtn);
-      const movieImg = new Image(300, 300);
-      movieImg.className = 'img';
-      movieImg.setAttribute('src', items?.image);
-      const titleDiv = document.createElement('div');
-      titleDiv?.classList.add('titleDiv');
-      const title = document.createElement('h2');
-      title.innerHTML = items?.title;
-      const ul = document.createElement('ul');
-      ul.classList.add('info');
-      const li1 = document.createElement('li');
-      li1.classList = 'infoChild';
-      li1.innerText = items?.titleOriginal;
-      ul.appendChild(li1);
-      const li3 = document.createElement('li');
-      li3.classList = 'infoChild';
-      li3.innerHTML = items?.rating;
-      ul.appendChild(li3);
-      const li4 = document.createElement('li');
-      li4.classList = 'infoChild';
-      li4.innerText = items?.release;
-      ul.appendChild(li4);
-      title.appendChild(ul);
-      div.appendChild(movieImg);
-      div.appendChild(title);
-      titleDiv.appendChild(div);
-      commentPopUp.appendChild(titleDiv);
-      commentPopUp.classList.add('.active');
+fetch(`${url}&api_key=${key}&page=1`)
+  .then((response) => response.json())
+  .then((data) => {
+    const array = data.results;
+    array.forEach((movie) => {
+      const movieCard = document.createElement('div');
+      movieCard.classList.add('items');
+      movieCard.id = movie.id;
+      console.log(movie);
+      movieCard.innerHTML = `
+              <img class="movie-img" 
+                src="${imgPath + movie.poster_path}" alt="">
+              <h2 class="movie-title">${movie.title}</h2>
+              <div class="reaction">
+                <button class="commentsBtn">comments</button>
+                <button class="reservations">reservations</button>
+              </div>
+              <div class="like-comments">
+                <i class="fa-regular fa-heart">  5 likes</i> 
+                <i class="fa-solid fa-comment">  5 comments</i>
+              </div>`;
+        bigContainer.appendChild(movieCard);
     });
-
-    reservationButton.addEventListener('click', () => {
-      // create the Pop up window to the reservation.
-      const commentPopUp = document.querySelector('.popComment');
-      const div = document.createElement('div');
-      div?.classList.add('popupitems');
-      const deleteBtn = document.createElement('button');
-      deleteBtn.type = 'button';
-      deleteBtn.classList = 'delete';
-      deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-      div.appendChild(deleteBtn);
-      const movieImg = new Image(300, 300);
-      movieImg.className = 'img';
-      movieImg.setAttribute('src', items?.image);
-      const titleDiv = document.createElement('div');
-      titleDiv?.classList.add('titleDiv');
-      const title = document.createElement('h2');
-      title.classList = 'title';
-      title.innerHTML = items?.title
-      const ul = document.createElement('ul');
-      ul.classList.add('info');
-      const li1 = document.createElement('li');
-      li1.classList = 'infoChild';
-      li1.innerText = items?.titleOriginal;
-      ul.appendChild(li1);
-      const li3 = document.createElement('li');
-      li3.classList = 'infoChild';
-      li3.innerHTML = items?.rating;
-      ul.appendChild(li3);
-      const li4 = document.createElement('li');
-      li4.classList = 'infoChild';
-      li4.innerText = items?.release;
-      ul.appendChild(li4);
-      title.appendChild(ul);
-      div.appendChild(movieImg);
-      div.appendChild(title);
-      titleDiv.appendChild(div);
-      commentPopUp.appendChild(titleDiv);
-      commentPopUp.classList.add('.active');
-    });
-  }
-};
-
-export default display;
+  });

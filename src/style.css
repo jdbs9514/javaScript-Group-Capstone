@@ -39,21 +39,52 @@ a {
 
 .items {
   display: flex;
+  width: 300px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  justify-content: center;
+  padding: 15px;
 }
 
-.titleDiv {
+.like-comments {
+  font-size: 70%;
   display: flex;
-  width: 300px;
+  gap: 15px;
+  padding: 5%;
+}
+
+i {
+  padding: 10px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.items img {
+  width: 100%;
+}
+
+.title-div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   align-self: center;
   text-align: center;
   justify-content: center;
+  gap: 20px;
+}
+
+.reaction {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 25%;
 }
 
 button {
-  margin-top: 15px;
+  margin: 5%;
   padding: 10px 20px;
   border-radius: 8px;
 }
