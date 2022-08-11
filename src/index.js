@@ -1,11 +1,10 @@
-import styles from './style.css';
+import './style.css';
 
-const url =
-  "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc";
-const key = "367c6d3a0d8f351d5debe2e3965cfebc";
+const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
+const key = '367c6d3a0d8f351d5debe2e3965cfebc';
 // https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=367c6d3a0d8f351d5debe2e3965cfebc&page=1
 
-const imgPath = "https://image.tmdb.org/t/p/w1280/";
+const imgPath = 'https://image.tmdb.org/t/p/w1280/';
 const bigContainer = document.querySelector('.title-div');
 
 fetch(`${url}&api_key=${key}&page=1`)
@@ -28,6 +27,6 @@ fetch(`${url}&api_key=${key}&page=1`)
                 <i class="fa-regular fa-heart">  5 likes</i> 
                 <i class="fa-solid fa-comment">  5 comments</i>
               </div>`;
-        bigContainer.appendChild(movieCard);
+      bigContainer.appendChild(movieCard);
     });
   });
