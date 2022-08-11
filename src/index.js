@@ -28,7 +28,6 @@ fetch(`${url}&api_key=${key}&page=1`)
                 <i class="fa-solid fa-comment">  5 comments</i>
               </div>`;
       bigContainer.appendChild(movieCard);
-      
     });
     displayPopUp(array);
   });
