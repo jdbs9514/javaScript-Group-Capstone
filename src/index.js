@@ -3,19 +3,14 @@ import displayPopUp from './modules/popupcoment.js';
 
 const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
 const key = '367c6d3a0d8f351d5debe2e3965cfebc';
-// https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=367c6d3a0d8f351d5debe2e3965cfebc&page=1
 
-export const imgPath = 'https://image.tmdb.org/t/p/w1280/';
+const imgPath = 'https://image.tmdb.org/t/p/w1280/';
 const bigContainer = document.querySelector('.title-div');
-
-
 
 fetch(`${url}&api_key=${key}&page=1`)
   .then((response) => response.json())
   .then((data) => {
     const array = data.results;
-    console.log(array.title)
-    console.log(data);
     array.forEach((movie) => {
       const movieCard = document.createElement('div');
       movieCard.classList.add('items');
