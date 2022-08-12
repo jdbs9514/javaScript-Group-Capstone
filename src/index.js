@@ -1,6 +1,6 @@
 import './style.css';
 import displayPopUp from './modules/popupcoment.js';
-import { addElements, displayComments } from './modules/showComments';
+import { addElements } from './modules/showComments';
 
 const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
 const key = '367c6d3a0d8f351d5debe2e3965cfebc';
@@ -37,6 +37,6 @@ fetch(`${url}&api_key=${key}&page=1`)
     if(e.target.className === 'submit') {
       e.preventDefault();
       addElements();
-      displayComments();
+      // displayComments();
     }
   })
