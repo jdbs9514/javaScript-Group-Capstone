@@ -29,4 +29,12 @@ function displayPopUp(array) {
   });
 }
 
+const hidePopUp = document.querySelector('.fa-solid.fa-xmark');
+const popUp = document.querySelector('div.popup');
+window.addEventListener('click', (e) => {
+  if(e.target.className === 'popup') {
+    popUp.classList.toggle = 'inactive';
+  }
+})
+
 export default displayPopUp;
