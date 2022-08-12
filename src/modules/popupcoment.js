@@ -2,7 +2,7 @@ const popUpContainer = document.querySelector('.popupcomment');
 
 function displayPopUp(array) {
   const commentBtn = document.querySelectorAll('.commentsBtn');
-  commentBtn.forEach(element => {
+  commentBtn.forEach((element) => {
     element.addEventListener('click', () => {
       const moviesDiv = element.closest('.items');
       for (let i = 0; i < array.length; i += 1) {
