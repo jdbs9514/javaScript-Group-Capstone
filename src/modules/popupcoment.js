@@ -14,12 +14,12 @@ function displayPopUp(array) {
                 <h2 class="titlemovie">${array[i].title}</h2>
                 <p class="lorem">${array[i].overview}</p>
                 <ul class="list">
-                  <li class="firstelement">I love this movie</li>
+                  <li class="firstelement">Amalai  I love this movie</li>
                 </ul>
                 <form class="formaction">
                   <input class="name" type="text" placeholder="Your name" required>
                   <textarea class="textarea" placeholder="Your insights"></textarea>
-                  <button id='${array[i].id}' type="submit">COMMENT</button>
+                  <button id='${array[i].id}' class="submit" type="button">COMMENT</button>
                 </form>
               </div>`;
           popUpContainer.innerHTML = popUp;
