@@ -2,7 +2,7 @@ const popUpContainer = document.querySelector('.popupcomment');
 
 function displayPopUp(array) {
   const commentBtn = document.querySelectorAll('.commentsBtn');
-  commentBtn.forEach((element) => {
+  commentBtn.forEach(element => {
     element.addEventListener('click', () => {
       const moviesDiv = element.closest('.items');
       for (let i = 0; i < array.length; i += 1) {
@@ -19,7 +19,7 @@ function displayPopUp(array) {
                 <form class="formaction">
                   <input class="name" type="text" placeholder="Your name" required>
                   <textarea class="textarea" placeholder="Your insights"></textarea>
-                  <button type="submit">COMMENT</button>
+                  <button id='${array[i].id}' type="submit">COMMENT</button>
                 </form>
               </div>`;
           popUpContainer.innerHTML = popUp;
