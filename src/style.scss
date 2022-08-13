@@ -47,6 +47,10 @@ button {
   font-size: 2.4rem;
 }
 
+.menu-icon{
+  width: 10%;
+  height: auto;
+}
 
 header {
   display: flex;
@@ -61,8 +65,17 @@ header {
 
   h1,
   h2 {
-    font-size: 1.2rem;
+    font-size: 90%;
     color: white;
+  }
+
+  .filmIcon {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .navBarTitle {
+    font-size: 50%;
   }
 
   .icon-movie {
@@ -431,12 +444,12 @@ footer {
     }
 
     h1 {
-      font-size: 1.3rem;
+      font-size: 120%;
       margin-left: 2rem;
     }
 
     h2 {
-      font-size: 0.9rem;
+      font-size: 120%;
       margin-left: 2rem;
     }
 

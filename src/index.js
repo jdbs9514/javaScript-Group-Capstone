@@ -2,6 +2,13 @@ import './style.scss';
 import getData from './modules/extrenalAPI.js';
 import { getLikes, postLike } from './modules/involvement.js';
 import popup from './modules/popup.js';
+import camera from './assets/camera.png';
+
+const divIcon = document.getElementById('img');
+const icon = document.createElement('img');
+icon.classList = 'filmIcon';
+icon.src = camera;
+divIcon.appendChild(icon);
 
 const countResults = document.querySelector('h2');
 
@@ -135,7 +142,7 @@ const createElementForShows = async (requestURL) => {
         div.append(divImg, starContainer, h1, cBtn);
         cards.append(div);
         elementCount += 1;
-        countResults.textContent = `Number of Elements: ${elementCount}`;
+        countResults.textContent = `Number of Series: ${elementCount}`;
 
         cBtn.addEventListener('click', () => {
           popup(el.id);
