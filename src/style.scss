@@ -47,7 +47,7 @@ button {
   font-size: 2.4rem;
 }
 
-.menu-icon{
+.menu-icon {
   width: 10%;
   height: auto;
 }
@@ -79,7 +79,7 @@ header {
   }
 
   .icon-movie {
-    color:#fff
+    color: #fff;
   }
 
   button {
@@ -336,6 +336,7 @@ header {
       background-position: center;
       background-repeat: no-repeat;
       margin: auto;
+
       &:hover {
         box-shadow: 0 0 30px black inset;
       }
@@ -361,7 +362,7 @@ header {
       align-items: center;
       margin-top: 1rem;
       width: 80%;
-      gap:4rem;
+      gap: 4rem;
     }
 
     .starRate {
@@ -377,7 +378,6 @@ header {
       width: 10%;
       text-align: center;
       margin-right: auto;
-      
     }
 
     .likesContainer {

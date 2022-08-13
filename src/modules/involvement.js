@@ -2,10 +2,10 @@ const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/
 const appID = '69OY6E73yjavl4eR3trH';
 
 const postLike = async (itemID) => {
-   const response = await fetch(`${url}${appID}/likes`, {
+  const response = await fetch(`${url}${appID}/likes`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=UTF-8',
     },
     body: JSON.stringify({ item_id: itemID }),
   });
