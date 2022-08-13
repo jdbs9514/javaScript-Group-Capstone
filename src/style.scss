@@ -45,8 +45,8 @@ button {
 .icons {
   font-family: 'Material Icons', sans-serif;
   font-size: 2.4rem;
-  color: #fff;
 }
+
 
 header {
   display: flex;
@@ -63,6 +63,10 @@ header {
   h2 {
     font-size: 1.2rem;
     color: white;
+  }
+
+  .icon-movie {
+    color:#fff
   }
 
   button {
@@ -93,7 +97,7 @@ header {
 .popup-content {
   width: 40%;
   height: max-content;
-  background-color: black;
+  background-color: #001a00;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -344,6 +348,7 @@ header {
       align-items: center;
       margin-top: 1rem;
       width: 80%;
+      gap:4rem;
     }
 
     .starRate {
@@ -359,6 +364,7 @@ header {
       width: 10%;
       text-align: center;
       margin-right: auto;
+      
     }
 
     .likesContainer {
