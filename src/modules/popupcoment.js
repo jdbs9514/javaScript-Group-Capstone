@@ -10,9 +10,9 @@ function displayPopUp(array) {
           const imgPath = 'https://image.tmdb.org/t/p/w1280/';
           const popUp = `<div class="popup">
                 <button class="delete" type="button"><i class="fa-solid fa-xmark"></i></button>
-                <img class="postimage" src="${imgPath + array[i].poster_path}" alt="">
-                <h2 class="titlemovie">${array[i].title}</h2>
-                <p class="lorem">${array[i].overview}</p>
+                <img class="postimage" src="${imgPath + movie.poster_path}" alt="">
+                <h2 class="titlemovie">${movie.title}</h2>
+                <p class="lorem">${movie.overview}</p>
                 <ul class="list">
                   <li class="firstelement">I love this movie</li>
                 </ul>
@@ -25,8 +25,9 @@ function displayPopUp(array) {
           popUpContainer.innerHTML = popUp;
         }
       }
-    });
-  });
-}
+                    popUpContainer.innerHTML = popUp;
+                })
+            });
+          }
 
 export default displayPopUp;
