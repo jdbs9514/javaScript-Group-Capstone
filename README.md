@@ -19,6 +19,8 @@ This is the final project of the moduel 2. we build a series page using an API t
 
 [Live Demo Link]( https://jdbs9514.github.io/javaScript-Group-Capstone/)
 
+[Zoom]: (https://drive.google.com/drive/my-drive)
+
 
 ## Getting Started
 
