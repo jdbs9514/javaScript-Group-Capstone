@@ -1,42 +1,151 @@
-import './style.css';
-import displayPopUp from './modules/popupcoment.js';
-import { addElements } from './modules/showComments';
+import './style.scss';
+import getData from './modules/extrenalAPI.js';
+import { getLikes, postLike } from './modules/involvement.js';
+import popup from './modules/popup.js';
 
-const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
-const key = '367c6d3a0d8f351d5debe2e3965cfebc';
+const countResults = document.querySelector('h2');
 
-const imgPath = 'https://image.tmdb.org/t/p/w1280/';
-const bigContainer = document.querySelector('.title-div');
-
-fetch(`${url}&api_key=${key}&page=1`)
-  .then((response) => response.json())
-  .then((data) => {
-    const array = data.results;
-    array.forEach((movie) => {
-      const movieCard = document.createElement('div');
-      movieCard.classList.add('items');
-      movieCard.id = movie.id;
-      movieCard.innerHTML = `
-              <img class="movie-img" 
-                src="${imgPath + movie.poster_path}" alt="">
-              <h2 class="movie-title">${movie.title}</h2>
-              <div class="reaction">
-                <button class="commentsBtn">comments</button>
-                <button class="reservations">reservations</button>
-              </div>
-              <div class="like-comments">
-                <i class="fa-regular fa-heart">  5 likes</i> 
-                <i class="fa-solid fa-comment">  5 comments</i>
-              </div>`;
-      bigContainer.appendChild(movieCard);
-    });
-    displayPopUp(array);
-  });
-
-  window.addEventListener('click', (e) => {
-    if(e.target.className === 'submit') {
-      e.preventDefault();
-      addElements();
-      // displayComments();
+// Update Likes
+const updateLikes = async () => {
+  const response = await getLikes();
+  document.querySelectorAll('.starCount').forEach((button) => {
+    for (let i = 0; i < response.length; i += 1) {
+      if (response[i].item_id === Number(button.id)) {
+        button.lastChild.textContent = response[i].likes;
+      }
     }
-  })
+  });
+};
+
+// Display Cards
+const cards = document.querySelector('.cards');
+const createElement = async (requestURL) => {
+  cards.innerHTML = '';
+  await getData(requestURL)
+    .then((data) => {
+      let elementCount = 0;
+      const dataArray = data.embedded.episodes;
+      dataArray.forEach((el) => {
+        const div = document.createElement('div');
+        div.classList.add('cardItem');
+        const divImg = document.createElement('div');
+        divImg.classList.add('cardImg');
+        divImg.style.backgroundImage = `url(${el.image.original})`;
+        const h1 = document.createElement('h1');
+        h1.classList.add('cardName');
+        h1.textContent = `S${el.season}E${el.number} ${el.name}`;
+        const details = document.createElement('p');
+        details.classList.add('cardDetails');
+        details.innerHTML = `Plot Summary: <br>${el.summary}`;
+        const h2 = document.createElement('h2');
+        h2.classList.add('cardRuntime');
+        h2.textContent = `Runtime: ${el.runtime} mins Rating: ${el.rating.average}`;
+
+        const starContainer = document.createElement('div');
+        starContainer.classList.add('starContainer');
+
+        const starRate = document.createElement('span');
+        starRate.classList.add('material-icons-round');
+        starRate.classList.add('icons');
+        starRate.classList.add('starRate');
+        starRate.textContent = 'star_rate';
+
+        const starCount = document.createElement('span');
+        starCount.classList.add('starCount');
+        starCount.setAttribute('id', el.id);
+        starCount.textContent = '0';
+
+        const starBorder = document.createElement('span');
+        starBorder.classList.add('material-icons-round');
+        starBorder.classList.add('icons');
+        starBorder.classList.add('starBorder');
+        starBorder.textContent = 'star_border';
+        starBorder.setAttribute('id', el.id);
+
+        // Like
+        starBorder.addEventListener('click', () => {
+          postLike(el.show.id);
+          starBorder.classList.toggle('liked');
+          starCount.setAttribute('disabled', true);
+          setTimeout(updateLikes, 100);
+        });
+
+        const cBtn = document.createElement('button');
+        cBtn.classList.add('commentBtn');
+        cBtn.textContent = 'Comments';
+        starContainer.append(starRate, starCount, starBorder);
+        div.append(divImg, starContainer, h1, h2, details, cBtn);
+        cards.append(div);
+        elementCount += 1;
+        countResults.textContent = `Search Results (${elementCount})`;
+      });
+    });
+};
+createElement('https://api.tvmaze.com/shows');
+
+const createElementForShows = async (requestURL) => {
+  cards.innerHTML = '';
+  await getData(requestURL)
+    .then((data) => {
+      let elementCount = 0;
+      data.forEach((el) => {
+        const div = document.createElement('div');
+        div.classList.add('cardItem');
+        const divImg = document.createElement('div');
+        divImg.classList.add('cardImg');
+        divImg.style.backgroundImage = `url(${el.image.original})`;
+        const h1 = document.createElement('h1');
+        h1.classList.add('cardName');
+        h1.textContent = el.name;
+
+        const starContainer = document.createElement('div');
+        starContainer.classList.add('starContainer');
+
+        const starRate = document.createElement('span');
+        starRate.classList.add('material-icons-round');
+        starRate.classList.add('icons');
+        starRate.classList.add('starRate');
+        starRate.textContent = 'star_rate';
+
+        const starCount = document.createElement('span');
+        starCount.classList.add('starCount');
+        starCount.setAttribute('id', el.id);
+        starCount.textContent = '0';
+
+        const starBorder = document.createElement('span');
+        starBorder.classList.add('material-icons-round');
+        starBorder.classList.add('icons');
+        starBorder.classList.add('starBorder');
+        starBorder.textContent = 'star_border';
+        starBorder.setAttribute('id', el.id);
+
+        // Like
+        starBorder.addEventListener('click', () => {
+          postLike(el.id);
+          starBorder.classList.toggle('liked');
+          starCount.setAttribute('disabled', true);
+          setTimeout(updateLikes, 1000);
+        });
+
+        const cBtn = document.createElement('button');
+        cBtn.classList.add('commentBtn');
+        cBtn.setAttribute('id', `b${el.id}`);
+        cBtn.textContent = 'Comments';
+        starContainer.append(starRate, starCount, starBorder);
+        div.append(divImg, starContainer, h1, cBtn);
+        cards.append(div);
+        elementCount += 1;
+        countResults.textContent = `Number of Elements: ${elementCount}`;
+
+        cBtn.addEventListener('click', () => {
+          popup(el.id);
+        });
+      });
+    });
+};
+
+window.onload = () => {
+  const defaultURL = 'https://api.tvmaze.com/shows';
+  createElementForShows(defaultURL);
+  setTimeout(updateLikes, 100);
+};
