@@ -1,4 +1,4 @@
-// post name and movies
+/* // post name and movies
 const baseUrl = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc/comments';
 // POST -----------------------------------------------------
 const postToApi = async (name, comment) => {
@@ -13,8 +13,8 @@ const postToApi = async (name, comment) => {
     }),
   })
     .then((response) => response.json());
-};
-/*  // ADD NAME AND SCORES 
+}; */
+  // ADD NAME AND SCORES 
 export function addElements() { 
       const name = document.createElement('li'); 
      
@@ -26,7 +26,7 @@ export function addElements() {
       name.appendChild(t); 
       name.appendChild(s); 
       nameList.appendChild(name); 
-    }  */
+    } 
      
    /*  const addButt = document.getElementById('submit'); 
     addButt.addEventListener('click', addElements); 
@@ -34,7 +34,7 @@ export function addElements() {
     module.exports = addElements; */
    
 // ADD NAME AND MOVIES
- const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
+/*  const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
 const key = '367c6d3a0d8f351d5debe2e3965cfebc';
 const retrieveFromAPI = async () => {
     const res = await fetch(`${url}&api_key=${key}&page=1`);
@@ -51,4 +51,4 @@ const retrieveFromAPI = async () => {
     comments.forEach((comment) => {
       commentBoard(comment);
     });
-  }
+  } */

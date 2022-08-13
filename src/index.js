@@ -1,14 +1,12 @@
 import './style.css';
 import displayPopUp from './modules/popupcoment.js';
+import { addElements } from './modules/showComments';
 
 const url = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
 const key = '367c6d3a0d8f351d5debe2e3965cfebc';
-// https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=367c6d3a0d8f351d5debe2e3965cfebc&page=1
 
-export const imgPath = 'https://image.tmdb.org/t/p/w1280/';
+const imgPath = 'https://image.tmdb.org/t/p/w1280/';
 const bigContainer = document.querySelector('.title-div');
-
-
 
 fetch(`${url}&api_key=${key}&page=1`)
   .then((response) => response.json())
@@ -36,3 +34,24 @@ fetch(`${url}&api_key=${key}&page=1`)
     });
     displayPopUp(array);
   });
+
+  window.addEventListener('click', (e) => {
+    if(e.target.className === 'submit') {
+      e.preventDefault();
+      addElements();
+      displayComments();
+    }
+  })
+
+ /*  function deletePopUp() {
+  const popUp = document.querySelector('.popupcomment')
+  const div = document.querySelector('.popup')
+  window.addEventListener('click', (e) => {
+  if(e.target.id === 'delete') {
+    console.log('hola')
+    popUp.parentNode.removeChild(div);
+  }
+})
+} */
+
+// window.onload = deletePopUp();
