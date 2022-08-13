@@ -1,6 +1,6 @@
 import { postComment, getComments } from './involvement.js';
 
-let numComments = 0;
+let countComments = 0;
 const popup = (id) => {
   let i = 0;
   const body = document.querySelector('body');
@@ -108,8 +108,8 @@ const popup = (id) => {
             <p class="user-comment">${comment.comment}</p>
           </li>`;
       });
-      numComments = comments.length;
-      document.querySelector('.popup-subtilte').textContent = `Reviews (${numComments})`;
+      countComments = comments.length;
+      document.querySelector('.popup-subtilte').textContent = `Reviews (${countComments})`;
     }
   };
   updateComments(id);

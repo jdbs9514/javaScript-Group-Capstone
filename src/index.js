@@ -6,26 +6,26 @@ import popup from './modules/popup.js';
 const countResults = document.querySelector('h2');
 
 // Update Likes
-const updateLikes = async () => {
-  const response = await getLikes();
-  document.querySelectorAll('.starCount').forEach((button) => {
-    for (let i = 0; i < response.length; i += 1) {
-      if (response[i].item_id === Number(button.id)) {
-        button.lastChild.textContent = response[i].likes;
+const refreshLikes = async () => {
+  const array = await getLikes();
+  document.querySelectorAll('.likesCount').forEach((button) => {
+    for (let i = 0; i < array.length; i += 1) {
+      if (array[i].item_id === Number(button.id)) {
+        button.lastChild.textContent = array[i].likes;
       }
     }
   });
 };
 
-// Display Cards
-const cards = document.querySelector('.cards');
+// Display movies
+const movies = document.querySelector('.movies');
 const createElement = async (requestURL) => {
-  cards.innerHTML = '';
+  movies.innerHTML = '';
   await getData(requestURL)
     .then((data) => {
-      let elementCount = 0;
-      const dataArray = data.embedded.episodes;
-      dataArray.forEach((el) => {
+      let likesCount = 0;
+      const responseArray = data.embedded.episodes;
+      responseArray.forEach((el) => {
         const div = document.createElement('div');
         div.classList.add('cardItem');
         const divImg = document.createElement('div');
@@ -41,19 +41,19 @@ const createElement = async (requestURL) => {
         h2.classList.add('cardRuntime');
         h2.textContent = `Runtime: ${el.runtime} mins Rating: ${el.rating.average}`;
 
-        const starContainer = document.createElement('div');
-        starContainer.classList.add('starContainer');
+        const likesContainer = document.createElement('div');
+        likesContainer.classList.add('likesContainer');
 
-        const starRate = document.createElement('span');
-        starRate.classList.add('material-icons-round');
-        starRate.classList.add('icons');
-        starRate.classList.add('starRate');
-        starRate.textContent = 'star_rate';
+        const likesRate = document.createElement('span');
+        likesRate.classList.add('material-icons-round');
+        likesRate.classList.add('icons');
+        likesRate.classList.add('likesRate');
+        likesRate.textContent = 'star_rate';
 
-        const starCount = document.createElement('span');
-        starCount.classList.add('starCount');
-        starCount.setAttribute('id', el.id);
-        starCount.textContent = '0';
+        const likesCount = document.createElement('span');
+        likesCount.classList.add('likesCount');
+        likesCount.setAttribute('id', el.id);
+        likesCount.textContent = '0';
 
         const starBorder = document.createElement('span');
         starBorder.classList.add('material-icons-round');
@@ -66,28 +66,28 @@ const createElement = async (requestURL) => {
         starBorder.addEventListener('click', () => {
           postLike(el.show.id);
           starBorder.classList.toggle('liked');
-          starCount.setAttribute('disabled', true);
-          setTimeout(updateLikes, 100);
+          likesCount.setAttribute('disabled', true);
+          setTimeout(refreshLikes, 100);
         });
 
         const cBtn = document.createElement('button');
         cBtn.classList.add('commentBtn');
         cBtn.textContent = 'Comments';
-        starContainer.append(starRate, starCount, starBorder);
-        div.append(divImg, starContainer, h1, h2, details, cBtn);
-        cards.append(div);
-        elementCount += 1;
-        countResults.textContent = `Search Results (${elementCount})`;
+        likesContainer.append(likesRate, likesCount, starBorder);
+        div.append(divImg, likesContainer, h1, h2, details, cBtn);
+        movies.append(div);
+        likesCount += 1;
+        countResults.textContent = `Search Results (${likesCount})`;
       });
     });
 };
 createElement('https://api.tvmaze.com/shows');
 
 const createElementForShows = async (requestURL) => {
-  cards.innerHTML = '';
+  movies.innerHTML = '';
   await getData(requestURL)
     .then((data) => {
-      let elementCount = 0;
+      let likesCount = 0;
       data.forEach((el) => {
         const div = document.createElement('div');
         div.classList.add('cardItem');
@@ -98,19 +98,19 @@ const createElementForShows = async (requestURL) => {
         h1.classList.add('cardName');
         h1.textContent = el.name;
 
-        const starContainer = document.createElement('div');
-        starContainer.classList.add('starContainer');
+        const likesContainer = document.createElement('div');
+        likesContainer.classList.add('likesContainer');
 
-        const starRate = document.createElement('span');
-        starRate.classList.add('material-icons-round');
-        starRate.classList.add('icons');
-        starRate.classList.add('starRate');
-        starRate.textContent = 'star_rate';
+        const likesRate = document.createElement('span');
+        likesRate.classList.add('material-icons-round');
+        likesRate.classList.add('icons');
+        likesRate.classList.add('likesRate');
+        likesRate.textContent = 'star_rate';
 
-        const starCount = document.createElement('span');
-        starCount.classList.add('starCount');
-        starCount.setAttribute('id', el.id);
-        starCount.textContent = '0';
+        const likesCount = document.createElement('span');
+        likesCount.classList.add('likesCount');
+        likesCount.setAttribute('id', el.id);
+        likesCount.textContent = '0';
 
         const starBorder = document.createElement('span');
         starBorder.classList.add('material-icons-round');
@@ -123,19 +123,19 @@ const createElementForShows = async (requestURL) => {
         starBorder.addEventListener('click', () => {
           postLike(el.id);
           starBorder.classList.toggle('liked');
-          starCount.setAttribute('disabled', true);
-          setTimeout(updateLikes, 1000);
+          likesCount.setAttribute('disabled', true);
+          setTimeout(refreshLikes, 1000);
         });
 
         const cBtn = document.createElement('button');
         cBtn.classList.add('commentBtn');
         cBtn.setAttribute('id', `b${el.id}`);
         cBtn.textContent = 'Comments';
-        starContainer.append(starRate, starCount, starBorder);
-        div.append(divImg, starContainer, h1, cBtn);
-        cards.append(div);
-        elementCount += 1;
-        countResults.textContent = `Number of Elements: ${elementCount}`;
+        likesContainer.append(likesRate, likesCount, starBorder);
+        div.append(divImg, likesContainer, h1, cBtn);
+        movies.append(div);
+        likesCount += 1;
+        countResults.textContent = `Number of Elements: ${likesCount}`;
 
         cBtn.addEventListener('click', () => {
           popup(el.id);
@@ -147,5 +147,5 @@ const createElementForShows = async (requestURL) => {
 window.onload = () => {
   const defaultURL = 'https://api.tvmaze.com/shows';
   createElementForShows(defaultURL);
-  setTimeout(updateLikes, 100);
+  setTimeout(refreshLikes, 100);
 };

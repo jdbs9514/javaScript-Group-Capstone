@@ -352,7 +352,7 @@ header {
       color: $color-2;
     }
 
-    .starCount {
+    .likesCount {
       font-size: 1rem;
       border-radius: 1rem;
       color: white;
@@ -361,7 +361,7 @@ header {
       margin-right: auto;
     }
 
-    .starBorder {
+    .likesContainer {
       color: $color-3;
       cursor: pointer;
       margin-right: auto;
@@ -457,7 +457,7 @@ footer {
         height: 75px;
       }
 
-      .starCount {
+      .likesCount {
         width: 10%;
       }
     }
