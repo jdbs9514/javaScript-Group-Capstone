@@ -58,7 +58,7 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
   },
-  "dependencies": {
+    "dependencies": { 
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
