@@ -17,7 +17,7 @@ This is the final project of the moduel 2. we build a series page using an API t
 
 ## Live Demo (if available)
 
-[Live Demo Link]( https://jdbs9514.github.io/javaScript-Group-Capstone/)
+[Live Demo Link](https://glittering-kashata-b89a93.netlify.app/)
 
 Zoom: https://drive.google.com/drive/my-drive
 
